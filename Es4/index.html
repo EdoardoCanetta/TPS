@@ -1,72 +1,48 @@
 <html>
 
 <head>
-  <title>Excercise</title>
+    <title>Excercise</title>
 </head>
 
 <body id="body">
-  <h1>Es4</h1>
-  <h1>CREAZIONE DI UNA SEMPLICE CALCOLATRICE
-    si sviluppi in 3 step:
-    - pagina html con 2 caselle di testo e 4 pulsanti per le operazioni
-    - JQUERY assegnare funzioni di calcolo ai pulsanti
-    - mantenere in memoria il risultato tramite callback</h1>
-  <input type="number" id="nuno" name="nuno">Numero 1<br><br>
-  <input type="number" id="ndue" name="ndue">Numero 2<br><br>
-  </form>
-  <p></p>
+    <h1>Es4</h1>
+    <h1></h1>
+    <input type="number" id="nuno" name="nuno">Numero 1<br><br>
+    <input type="number" id="ndue" name="ndue">Numero 2<br><br>
+    <button id="btn">+</button>
+    <button id="btn1">-</button>
+    <button id="btn2">*</button>
+    <button id="btn3">/</button>
+    <h1 id="res"></h1>
+    </form>
+    <p></p>
 
 
-  <br /><br />
+    <br /><br />
 
-  
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script>
-    var btn = $("<button id=\"add\"></button>");
-    btn.html("Addizione");
-    btn.click(add);
-    $("body").append(btn);
-    var btn = $("<button id=\"sot\"></button>");
-    btn.html("Sottrazione");
-    btn.click(sot);
-    $("body").append(btn);
-    var btn = $("<button id=\"mol\"></button>");
-    btn.html("Moltiplicazione");
-    btn.click(mol);
-    $("body").append(btn);
-    var btn = $("<button id=\"div\"></button>");
-    btn.html("Divisione");
-    btn.click(div);
-    $("body").append(btn);
 
-    var add = function () {
-      var a = $("#nuno").val();
-      var b = $("#ndue").val();
-      var c = a + b;
-      console.log(c);
-    }
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function calcola(segno){
+            n1 = parseInt($("#nuno").val());
+            n2 = parseInt($("#ndue").val());
+            var ris;
+            switch (segno) {
+                case "+": ris = n1 + n2;break;
+                case "-": ris = n1 - n2;break;
+                case "*": ris = n1 * n2;break;
+                case "/": ris = n1 / n2;break;
+            }
+            $("#res").html(ris);
+        } 
 
-    var sot = function () {
-      var a = $("#nuno").val();
-      var b = $("#ndue").val();
-      var c = a - b;
-      console.log(c);
-    }
+        $("#btn").click(calcola("+"));
+        $("#btn1").on("click", calcola("-"));
+        $("#btn2").on("click", calcola("*"));
+        $("#btn3").on("click", calcola("/"));
 
-    var mol = function () {
-      var a = $("#nuno").val();
-      var b = $("#ndue").val();
-      var c = a * b;
-      console.log(c);
-    }
-
-    var div = function () {
-      var a = $("#nuno").val();
-      var b = $("#ndue").val();
-      var c = a / b;
-      console.log(c);
-    }
-  </script>
+        
+    </script>
 </body>
 
 </html>
