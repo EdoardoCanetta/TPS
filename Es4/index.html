@@ -38,6 +38,7 @@
       <th>n2</th>
       <th>operator</th>
       <th>result</th>
+      <th></th>
     </tr>
   </table>
 
@@ -74,9 +75,16 @@
           risultato = n1 * n2;
           break;
       }
-      $("#tb").append("<tr>" + "<td>" + n1 + "</td>" + "<td>" + n2 + "</td>" + "<td>" + segno + "</td>" + "<td>" + risultato + "</td>");
+      var btn = document.createElement("button");
+      btn.innerHTML = "Elimina";
+      //btn.attr("style", "background-color:   rgb(255, 0, 0)");
+      $("#tb").append("<tr>" + "<td>" + n1 + "</td>" +
+        "<td>" + n2 + "</td>" +
+        "<td>" + segno + "</td>" +
+        "<td>" + risultato + "</td>"
+        )
+      document.getElementById("tb").append(btn);
     }
-      //var isco = $("body").append($("<h3>wow</h3>"));
   </script>
 </body>
 
