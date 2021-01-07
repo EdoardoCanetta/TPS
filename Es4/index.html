@@ -21,9 +21,9 @@
 
   <br /><br />
 
-  <label for="num1">numero1:</label>
+  <label for="num1">numero 1:</label>
   <input type="number" id="num1" name="num1" /><br /><br />
-  <label for="num2">numer2:</label>
+  <label for="num2">numero 2:</label>
   <input type="number" id="num2" name="num2" /><br /><br />
   <button id="btn1">+</button>
   <button id="btn2">-</button>
@@ -38,7 +38,6 @@
       <th>n2</th>
       <th>operator</th>
       <th>result</th>
-      <th></th>
     </tr>
   </table>
 
@@ -56,6 +55,11 @@
     $("#btn4").click(function () {
       calcola("*");
     });
+
+    var lastOp = localStorage.getItem("operation");
+    if (!(typeof lastOp === undefined || typeof lastOp === null)) {
+      $("#tb").append(lastOp);
+    }
 
     function calcola(segno) {
       var n1 = parseInt($("#num1").val());
@@ -81,10 +85,16 @@
       $("#tb").append("<tr>" + "<td>" + n1 + "</td>" +
         "<td>" + n2 + "</td>" +
         "<td>" + segno + "</td>" +
-        "<td>" + risultato + "</td>"
-        )
-      document.getElementById("tb").append(btn);
-    }
+        "<td>" + risultato + "</td>" +
+        "<td><button class=\"btnDelete\">Delete</button></td>"
+      )
+      
+
+      var str = "<tr><td>" + n1 + "</td><td>" + n2 + "</td><td>" + segno + "</td><td>" + risultato + "</td><td><button class=\"btnDelete\">Delete</button></td></tr>";
+      localStorage.setItem("operation", str);
+
+      $("#tb").on('click', '.btnDelete', function () { $(this).closest('tr').remove(); });
+    }  
   </script>
 </body>
 
